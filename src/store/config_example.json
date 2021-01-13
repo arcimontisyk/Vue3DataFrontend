@@ -1,0 +1,1000 @@
+{
+  "joint_def": [
+    {
+      "joint_nr": 1,
+      "SPW_LOGICAL_ADR_HOST": 160,
+      "SPW_LOGICAL_JOINT_ADR_SINK": 176,
+      "SPW_LOGICAL_JOINT_ADR_SOURCE": 192,
+      "SPW_LOGICAL_JOINT_ADR_RMAP_TARGET": 208
+    },
+    {
+      "joint_nr": 2,
+      "SPW_LOGICAL_ADR_HOST": 161,
+      "SPW_LOGICAL_JOINT_ADR_SINK": 177,
+      "SPW_LOGICAL_JOINT_ADR_SOURCE": 193,
+      "SPW_LOGICAL_JOINT_ADR_RMAP_TARGET": 209
+    }
+  ],
+  "streams": [
+    {
+      "stream_info": {
+        "joint": 1,
+        "name": "ADR_ACTUAL_THETA",
+        "address": 32,
+        "length": 8
+      },
+      "payload": [
+        {
+          "name": "Theta",
+          "pos": 0,
+          "length": 4,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+          "id": "ID0"
+        },
+        {
+          "name": "status_drv",
+          "pos": 6,
+          "length": 1,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "bits": [
+            {
+              "name": "hall_ref",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID1"
+            },
+            {
+              "name": "drv_nFault",
+              "pos": 1,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID2"
+            },
+            {
+              "name": "drv_nOtw",
+              "pos": 2,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID3"
+            }
+          ]
+        },
+        {
+          "name": "status_hall",
+          "pos": 7,
+          "length": 1,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "bits": [
+            {
+              "name": "invalid_hall_sig",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID4"
+            },
+            {
+              "name": "sensor_seq_fault",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID5"
+            },
+            {
+              "name": "hall1",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID6"
+            },
+            {
+              "name": "hall2",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID7"
+            },
+            {
+              "name": "hall3",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID8"
+            },
+            {
+              "name": "hall4",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID9"
+            },
+            {
+              "name": "hall5",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID10"
+            },
+            {
+              "name": "hall6",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID11"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stream_info": {
+        "joint": 1,
+        "name": "ADR_ACTUAL_ADC",
+        "address": 64,
+        "length": 64
+      },
+      "payload": [
+        {
+          "name": "dgnd",
+          "pos": 0,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 1",
+          "id": "ID12"
+        },
+        {
+          "name": "i_phase_a",
+          "pos": 2,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 0",
+          "id": "ID13"
+        },
+        {
+          "name": "temp_ana_1",
+          "pos": 4,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 3",
+          "id": "ID14"
+        },
+        {
+          "name": "temp_ana_1",
+          "pos": 6,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 3",
+          "id": "ID15"
+        },
+        {
+          "name": "u_3v3d",
+          "pos": 8,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 2",
+          "id": "ID16"
+        },
+        {
+          "name": "temp_motor",
+          "pos": 10,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 5",
+          "id": "ID17"
+        },
+        {
+          "name": "radmonitor",
+          "pos": 12,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 4",
+          "id": "ID18"
+        },
+        {
+          "name": "u_3v3a",
+          "pos": 14,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 7",
+          "id": "ID19"
+        },
+        {
+          "name": "dgnd2",
+          "pos": 16,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 6",
+          "id": "ID20"
+        },
+        {
+          "name": "i_5v",
+          "pos": 18,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 1",
+          "id": "ID21"
+        },
+        {
+          "name": "i_phase_b",
+          "pos": 20,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 0",
+          "id": "ID22"
+        },
+        {
+          "name": "temp_ana_2",
+          "pos": 22,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 3",
+          "id": "ID23"
+        },
+        {
+          "name": "u_5vd",
+          "pos": 24,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 2",
+          "id": "ID24"
+        },
+        {
+          "name": "dgnd",
+          "pos": 26,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 5",
+          "id": "ID25"
+        },
+        {
+          "name": "u_2v5a",
+          "pos": 28,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 4",
+          "id": "ID26"
+        },
+        {
+          "name": "u_3v3a",
+          "pos": 30,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 7",
+          "id": "ID27"
+        },
+        {
+          "name": "t_2v5ref",
+          "pos": 32,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 6",
+          "id": "ID28"
+        },
+        {
+          "name": "i_power_m",
+          "pos": 34,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 1",
+          "id": "ID29"
+        },
+        {
+          "name": "i_phase_c",
+          "pos": 36,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 0",
+          "id": "ID30"
+        },
+        {
+          "name": "temp_ana3",
+          "pos": 38,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 3",
+          "id": "ID31"
+        },
+        {
+          "name": "pwr_m",
+          "pos": 40,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 2",
+          "id": "ID32"
+        },
+        {
+          "name": "u_12vd",
+          "pos": 42,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 5",
+          "id": "ID33"
+        },
+        {
+          "name": "i_12vd",
+          "pos": 44,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 4",
+          "id": "ID34"
+        },
+        {
+          "name": "u_3v3a",
+          "pos": 46,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 7",
+          "id": "ID35"
+        },
+        {
+          "name": "dgnd",
+          "pos": 48,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 6",
+          "id": "ID36"
+        },
+        {
+          "name": "dme_ref",
+          "pos": 50,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 1",
+          "id": "ID37"
+        },
+        {
+          "name": "dms",
+          "pos": 52,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 0",
+          "id": "ID38"
+        },
+        {
+          "name": "agnd",
+          "pos": 54,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 3",
+          "id": "ID39"
+        },
+        {
+          "name": "temp_struktur",
+          "pos": 56,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 2",
+          "id": "ID40"
+        },
+        {
+          "name": "agnd",
+          "pos": 58,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 5",
+          "id": "ID41"
+        },
+        {
+          "name": "temp_amp",
+          "pos": 60,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 4",
+          "id": "ID42"
+        },
+        {
+          "name": "agnd",
+          "pos": 62,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 7",
+          "id": "ID43"
+        },
+        {
+          "name": "agnd",
+          "pos": 64,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 6",
+          "id": "ID44"
+        }
+      ]
+    },
+    {
+      "stream_info": {
+        "joint": 2,
+        "name": "ADR_ACTUAL_THETA",
+        "address": 32,
+        "length": 8
+      },
+      "payload": [
+        {
+          "name": "Theta",
+          "pos": 0,
+          "length": 4,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+          "id": "ID45"
+        },
+        {
+          "name": "status_drv",
+          "pos": 6,
+          "length": 1,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "bits": [
+            {
+              "name": "hall_ref",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID46"
+            },
+            {
+              "name": "drv_nFault",
+              "pos": 1,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID47"
+            },
+            {
+              "name": "drv_nOtw",
+              "pos": 2,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID48"
+            }
+          ]
+        },
+        {
+          "name": "status_hall",
+          "pos": 7,
+          "length": 1,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "bits": [
+            {
+              "name": "invalid_hall_sig",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID49"
+            },
+            {
+              "name": "sensor_seq_fault",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID50"
+            },
+            {
+              "name": "hall1",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID51"
+            },
+            {
+              "name": "hall2",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID52"
+            },
+            {
+              "name": "hall3",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID53"
+            },
+            {
+              "name": "hall4",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID54"
+            },
+            {
+              "name": "hall5",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID55"
+            },
+            {
+              "name": "hall6",
+              "pos": 0,
+              "high": true,
+              "uuid": "6b7a9f9c-a7aa-5059-bec4-438a88401cee",
+              "id": "ID56"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "stream_info": {
+        "joint": 2,
+        "name": "ADR_ACTUAL_ADC",
+        "address": 64,
+        "length": 64
+      },
+      "payload": [
+        {
+          "name": "dgnd",
+          "pos": 0,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 1",
+          "id": "ID57"
+        },
+        {
+          "name": "i_phase_a",
+          "pos": 2,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 0",
+          "id": "ID58"
+        },
+        {
+          "name": "temp_ana_1",
+          "pos": 4,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 3",
+          "id": "ID59"
+        },
+        {
+          "name": "temp_ana_1",
+          "pos": 6,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 3",
+          "id": "ID60"
+        },
+        {
+          "name": "u_3v3d",
+          "pos": 8,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 2",
+          "id": "ID61"
+        },
+        {
+          "name": "temp_motor",
+          "pos": 10,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 5",
+          "id": "ID62"
+        },
+        {
+          "name": "radmonitor",
+          "pos": 12,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 4",
+          "id": "ID63"
+        },
+        {
+          "name": "u_3v3a",
+          "pos": 14,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 7",
+          "id": "ID64"
+        },
+        {
+          "name": "dgnd2",
+          "pos": 16,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC1 Channel 6",
+          "id": "ID65"
+        },
+        {
+          "name": "i_5v",
+          "pos": 18,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 1",
+          "id": "ID66"
+        },
+        {
+          "name": "i_phase_b",
+          "pos": 20,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 0",
+          "id": "ID67"
+        },
+        {
+          "name": "temp_ana_2",
+          "pos": 22,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 3",
+          "id": "ID68"
+        },
+        {
+          "name": "u_5vd",
+          "pos": 24,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 2",
+          "id": "ID69"
+        },
+        {
+          "name": "dgnd",
+          "pos": 26,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 5",
+          "id": "ID70"
+        },
+        {
+          "name": "u_2v5a",
+          "pos": 28,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 4",
+          "id": "ID71"
+        },
+        {
+          "name": "u_3v3a",
+          "pos": 30,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 7",
+          "id": "ID72"
+        },
+        {
+          "name": "t_2v5ref",
+          "pos": 32,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC2 Channel 6",
+          "id": "ID73"
+        },
+        {
+          "name": "i_power_m",
+          "pos": 34,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 1",
+          "id": "ID74"
+        },
+        {
+          "name": "i_phase_c",
+          "pos": 36,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 0",
+          "id": "ID75"
+        },
+        {
+          "name": "temp_ana3",
+          "pos": 38,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 3",
+          "id": "ID76"
+        },
+        {
+          "name": "pwr_m",
+          "pos": 40,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 2",
+          "id": "ID77"
+        },
+        {
+          "name": "u_12vd",
+          "pos": 42,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 5",
+          "id": "ID78"
+        },
+        {
+          "name": "i_12vd",
+          "pos": 44,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 4",
+          "id": "ID79"
+        },
+        {
+          "name": "u_3v3a",
+          "pos": 46,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 7",
+          "id": "ID80"
+        },
+        {
+          "name": "dgnd",
+          "pos": 48,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC3 Channel 6",
+          "id": "ID81"
+        },
+        {
+          "name": "dme_ref",
+          "pos": 50,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 1",
+          "id": "ID82"
+        },
+        {
+          "name": "dms",
+          "pos": 52,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 0",
+          "id": "ID83"
+        },
+        {
+          "name": "agnd",
+          "pos": 54,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 3",
+          "id": "ID84"
+        },
+        {
+          "name": "temp_struktur",
+          "pos": 56,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 2",
+          "id": "ID85"
+        },
+        {
+          "name": "agnd",
+          "pos": 58,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 5",
+          "id": "ID86"
+        },
+        {
+          "name": "temp_amp",
+          "pos": 60,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 4",
+          "id": "ID87"
+        },
+        {
+          "name": "agnd",
+          "pos": 62,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 7",
+          "id": "ID88"
+        },
+        {
+          "name": "agnd",
+          "pos": 64,
+          "length": 2,
+          "byte_order": "MSB",
+          "signed": false,
+          "offset": 0,
+          "high": true,
+          "note": "ADC4 Channel 6",
+          "id": "ID89"
+        }
+      ]
+    }
+  ]
+}
