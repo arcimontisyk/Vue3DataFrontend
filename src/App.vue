@@ -12,18 +12,18 @@
 
     <v-main>
       <!--  -->
-      <axiostest/>
+      <router-view/>
+
     </v-main>
   </v-app>
 </template>
 
 <script>
-import axiostest from '@/components/axios_test_component.vue';
 
 export default {
   name: 'App',
 
-  components: { axiostest },
+  components: {  },
 
   data: () => ({
     //

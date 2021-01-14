@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     post: null,
-    streamconfig: null,
+    streamconfig: [],
     values: [],
     statusbits: [],
   },

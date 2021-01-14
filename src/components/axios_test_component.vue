@@ -14,7 +14,7 @@ export default {
   name: 'axiostest',
   data: function () {
     return {
-      joint_nr: this.props.joint_nr
+      joint_nr: 1
     };
   },
   props: {
@@ -28,7 +28,7 @@ export default {
       return this.$store.state.streamconfig;
     },
     values() {
-      return this.$store.state.values[this.props.joint_nr-1];
+      return this.$store.state.values[this.joint_nr-1];
     },
   },
   methods: {
@@ -43,6 +43,7 @@ export default {
     },
   },
   created() {
+    this.joint_nr = this.jointNr;
     this.getValues();
   },
 };
