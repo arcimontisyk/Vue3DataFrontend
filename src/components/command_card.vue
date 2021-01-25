@@ -1,17 +1,20 @@
 <template>
-  <v-card class="mx-auto" max-width="300" tile>
-    <v-list rounded>
-      <v-subheader>REPORTS</v-subheader>
-      <v-list-item-group v-model="selectedItem" color="primary">
-        <v-list-item v-for="(item, key, i) in cmd_config.commands" :key="i">
-        
+  <v-card class="mx-auto" max-width="350px" tile>
+      <v-card-title>Tina commands Joint 1</v-card-title>
+    <v-container fill-height fluid cursor:off>
+      <template v-for="(item, key, i) in cmd_config.commands">
+        <v-row :key="i" dense justify="center" align="center">
+          <v-col cols="12" sm="6" md="8" >
             <v-btn depressed> {{ key }} </v-btn>
-   
-            <v-list-item-title v-text="1"></v-list-item-title>
-      
-        </v-list-item>
-      </v-list-item-group>
-    </v-list>
+          </v-col>
+          <v-col cols="6" md="4" align="right">
+            <v-chip class="ma-2" color="primary" text-color="white">
+              ON
+            </v-chip>
+          </v-col>
+        </v-row>
+      </template>
+    </v-container>
   </v-card>
 </template>
 
