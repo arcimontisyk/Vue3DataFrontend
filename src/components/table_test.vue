@@ -1,5 +1,6 @@
  <template id="my-component">
   <div>
+    <button @click="dispatchDataStream">get Stream</button>
     <v-data-table
       :headers="headers"
       :items="getStreamConfig"
@@ -7,30 +8,26 @@
       class="elevation-1"
     >
     </v-data-table>
-    <a> {{ getStreamConfig }} </a>
+    <a> {{ this.$store.state.streamConfig }} </a>
   </div>
 </template>
 
 <script>
+//import axios from "axios";
+
 export default {
   name: "tabletest",
   data: function () {
     return {
       joint_nr: 1,
-      streamconfig: this.$store.state.streamconfig,
       headers: [
-        { text: "ID", value: "value_id" },
-        { text: "Payloaditem", value: "payloaditem.name" },
-        { text: "signed", value: "calibration.signed" },
-        { text: "Offset", value: "calibration.offset" },
-        { text: "x", value: "calibration.factor" },
-        { text: "x²", value: "calibration.factor_2" },
-        { text: "x³", value: "calibration.factor_3" },
-      ],
-      replyHeaders: [
-        { text: "Position in Stream", value: "payloaditem.position" },
-        { text: "Length in bytes", value: "payloaditem.length" },
-        { text: "byte-order", value: "payloaditem.byte_order" },
+        { text: "ID", value: "config.value_id" },
+        { text: "Payloaditem", value: "config.payloaditem.name" },
+        { text: "signed", value: "config.calibration.signed" },
+        { text: "Offset", value: "config.calibration.offset" },
+        { text: "x", value: "config.calibration.factor" },
+        { text: "x²", value: "config.calibration.factor_2" },
+        { text: "x³", value: "config.calibration.factor_3" },
       ],
     };
   },
@@ -38,30 +35,57 @@ export default {
     jointNr: Number,
   },
   computed: {
-    post() {
-      return this.$store.state.post;
+    getAll() {
+      var config = this.getStreamConfig;
+      var data = this.$store.state.streamData;
+      var x = [];
+
+      for (var conf in config) {
+        var tempObj = {};
+        tempObj["config"] = config[conf];
+        tempObj["data"] = data[config[conf].stream_id];
+        x.push(tempObj);
+        //   var all = {};
+        //   all.data = config[conf];
+        //   if (data != null) {
+        //     all.data = data[conf.value_id];
+        //   }
+        //   x.push(all);
+      }
+      return x;
     },
     getStreamConfig() {
-      return this.$store.state.streamconfig;
+      return this.$store.state.streamConfig;
     },
-    values() {
-      return this.$store.state.values[this.joint_nr - 1];
+    getStreamData() {
+      return this.$store.state.streamData;
     },
   },
   methods: {
-    getPost() {
-      this.$store.dispatch("getPost", { id: 1 });
+    dispatchStreamConfig() {
+      this.$store.dispatch("getStreamConfig");
     },
-    getMessage() {
-      this.$store.dispatch("receiveMessageStream");
-    },
-    getValues() {
-      this.$store.dispatch("getValues", { jointNr: 1 });
+    dispatchDataStream() {
+      //this.$store.dispatch("getValues", { jointNr: 1 });
+      this.$store.dispatch("getDataStream");
     },
   },
   created() {
+    console.log("created")
     this.joint_nr = this.jointNr;
-    this.getMessage();
+    this.dispatchStreamConfig();
+    this.dispatchDataStream();
+/*
+    axios
+      .get("http://localhost:5000/datastream")
+      .then((response) => {
+        // JSON responses are automatically parsed.
+        this.$store.state.streamData = response.data;
+      })
+      .catch((e) => {
+        this.errors.push(e);
+      });
+      */
   },
 };
 </script>

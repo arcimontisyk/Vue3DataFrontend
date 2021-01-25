@@ -4,17 +4,16 @@
     <button @click="getMessage">get message</button>
     <p>{{ post }}</p>
     <p>{{ message }}</p>
-    <p>{{ values }} </p>
+    <p>{{ values }}</p>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'axiostest',
+  name: "axiostest",
   data: function () {
     return {
-      joint_nr: 1
+      joint_nr: 1,
     };
   },
   props: {
@@ -28,18 +27,18 @@ export default {
       return this.$store.state.streamconfig;
     },
     values() {
-      return this.$store.state.values[this.joint_nr-1];
+      return this.$store.state.values[this.joint_nr - 1];
     },
   },
   methods: {
     getPost() {
-      this.$store.dispatch('getPost', { id: 1 });
+      this.$store.dispatch("getPost", { id: 1 });
     },
     getMessage() {
-      this.$store.dispatch('receiveMessageStream');
+      this.$store.dispatch("receiveMessageStream");
     },
     getValues() {
-      this.$store.dispatch('getValues', { jointNr: 1 });
+      this.$store.dispatch("getValues", { jointNr: 1 });
     },
   },
   created() {

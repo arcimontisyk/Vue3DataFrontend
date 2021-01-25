@@ -6,48 +6,59 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    post: null,
-    streamconfig: [],
-    values: [],
-    statusbits: [],
+    streamConfig: [],
+    streamData: {}
   },
   mutations: {
-    setValues(state, data, jointNr) {
-      state.values[jointNr] = data;
+    setStreamData(state, data) {
+      state.streamData = data;
     },
-    setPost(state, data) {
-      state.post = data;
-    },
-    setMessage(state, jsonMessage) {
-      state.streamconfig = jsonMessage;
+    setStreamConfig(state, jsonMessage) {
+      state.streamConfig = jsonMessage;
     },
   },
   actions: {
-    async getPost(context, { id }) {
+    async getStreamConfig(context) {
       const { data } = await axios.get(
-        `https://jsonplaceholder.typicode.com/posts/${id}`,
-      );
-      context.commit('setPost', data);
-    },
-    async receiveMessageStream(context) {
-      const { data } = await axios.get(
-        'http://localhost:5000/values/1',
+        'http://localhost:5000/config',
       ).catch();
-      context.commit('setMessage', data);
+      context.commit('setStreamConfig', data);
     },
-    async getTest(context, { id }) {
-      const { data } = await axios.get(
-        `https://jsonplaceholder.typicode.com/posts/${id}`,
-      );
-      context.commit('setPost', data);
+    //    async getValues(context, { jointNr }) {
+    async getDataStream(context) {
+      let es = new EventSource('http://127.0.0.1:5000/datastream');
+      es.addEventListener('message', event => {
+        let data = JSON.parse(event.data);
+        console.log(event.data)
+        context.commit('setStreamData', data)
+      }, false);
+
+      console.log("getDataStream")
+      //  const { data } = await axios.get(
+      //    // `http://localhost:5000/datastream${jointNr}`,
+      //    'http://localhost:5000/datastream',
+      //  );
+      //  context.commit('setStreamData', data);
+
+   //   axios.get('http://127.0.0.1:5000/datastream', {
+   //     crossdomain: true,
+   //   }).then(function (response) {
+   //     console.log("response:")
+   //     console.log(response)
+   //     console.log(response.data)
+   //     context.commit('setStreamData', response.data);
+   //   }).catch(function (error) {
+   //     if (error.response) {
+   //       console.log(error.response.headers);
+   //     }
+   //     else if (error.request) {
+   //       console.log(error.request);
+   //     }
+   //     else {
+   //       console.log(error.message);
+   //     }
+   //     console.log(error.config);
+   //   });
     },
-    async getValues(context, { jointNr }) {
-      const { data } = await axios.get(
-        `https://jsonplaceholder.typicode.com/values/${jointNr}`,
-      );
-      context.commit('setPost', data);
-    },
-  },
-  modules: {
   },
 });
