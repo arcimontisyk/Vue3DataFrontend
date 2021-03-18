@@ -21,6 +21,7 @@
 <script>
 
 export default {
+  // https://daybrush.com/moveable/release/latest/doc/
   name: 'App',
 
   components: {  },
