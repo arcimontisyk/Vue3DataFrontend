@@ -1,15 +1,14 @@
 <template>
   <section>
     <no-ssr>
-      <drag-resize ref="objProduct" :x="0" :y="0">
-        <InteractModule :childComponent="currentComponent" />
-        <div v-if="resize">
+      <drag-resize ref="objProduct" :y="0" :x="0">
+        <InteractModule :childComponent="currentComponent" v-bind:resize.sync="resizeModule" />
+        <div v-if="resizeModule">
           <div class="resizer tl"></div>
           <div class="resizer bl"></div>
           <div class="resizer tr"></div>
           <div class="resizer br"></div>
         </div>
-     
       </drag-resize>
 
     </no-ssr>
@@ -28,7 +27,7 @@ export default {
 },
   data() {
     return {
-      resize: false,
+      resizeModule: false,
       currentComponent: TestCard
     };
   },
@@ -36,13 +35,16 @@ export default {
     show(e) {
       e.preventDefault();
       this.showMenu = false;
-      this.x = e.clientX;
       this.y = e.clientY;
+      this.x = e.clientX;
       this.$nextTick(() => {
         this.showMenu = true;
       });
     },
   },
+  mounted(){
+
+  }
 };
 </script>
 
