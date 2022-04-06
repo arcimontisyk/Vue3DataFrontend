@@ -1,28 +1,53 @@
 <template>
   <section>
     <no-ssr>
-      <drag-resize ref="objProduct" :x="0" :y="0" :w="200">
-        <ExampleCard />
-        <div class="resizer tl"></div>
-        <div class="resizer bl"></div>
-        <div class="resizer tr"></div>
-        <div class="resizer br"></div>
+      <drag-resize ref="objProduct" :x="0" :y="0">
+        <InteractModule :childComponent="currentComponent" />
+        <div v-if="resize">
+          <div class="resizer tl"></div>
+          <div class="resizer bl"></div>
+          <div class="resizer tr"></div>
+          <div class="resizer br"></div>
+        </div>
+     
       </drag-resize>
+
     </no-ssr>
   </section>
 </template>
 
 <script>
+import TestCard from "~/components/testCard.vue";
 import DragResize from "~/components/DragResize.vue";
-import ExampleCard from "~/components/exampleCard.vue"
+import InteractModule from "../components/interactModule.vue";
 export default {
   components: {
-    DragResize, ExampleCard
+    DragResize,
+    TestCard,
+    InteractModule
+},
+  data() {
+    return {
+      resize: false,
+      currentComponent: TestCard
+    };
+  },
+  methods: {
+    show(e) {
+      e.preventDefault();
+      this.showMenu = false;
+      this.x = e.clientX;
+      this.y = e.clientY;
+      this.$nextTick(() => {
+        this.showMenu = true;
+      });
+    },
   },
 };
 </script>
 
-<style style="scss">
+<style scoped style="scss">
+
 body {
   background: black;
 }
