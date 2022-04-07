@@ -1,7 +1,45 @@
 <template>
-  <div class="dragresize__item" :style="transformString">
+  <div class="dragresize__item" :style="transformString" @contextmenu="show">
     <slot></slot>
-    <v-btn elevation="2" @click="setDraggable(true)">Drag</v-btn>
+    <v-menu
+      v-model="menu.showMenu"
+      :position-y="y"
+      :position-x="x"
+      absolute
+      offset-y
+    >
+      <v-list flat subheader three-line>
+        <v-subheader>General</v-subheader>
+
+        <v-list-item-group v-model="menu.settings" multiple active-class="">
+          <v-list-item>
+            <template v-slot:default="{ active }">
+              <v-list-item-action>
+                <v-checkbox
+                  v-model="isResizable"
+                  :input-value="active"
+                  :label="'Resize container'"
+                  :title="'resize'"
+                ></v-checkbox>
+              </v-list-item-action>
+            </template>
+          </v-list-item>
+
+          <v-list-item>
+            <template v-slot:default="{ active }">
+              <v-list-item-action>
+                <v-checkbox
+                  v-model="isDraggable"
+                  :input-value="active"
+                  :label="'Drag container'"
+                  :title="'drag'"
+                ></v-checkbox>
+              </v-list-item-action>
+            </template>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-menu>
   </div>
 </template>
 
@@ -12,6 +50,14 @@ export default {
   props: ["src", "x", "y", "w"],
   data() {
     return {
+      // menu
+      menu: {
+        showMenu: false,
+        settings: [true, false],
+        y: 0,
+        x: 0,
+      },
+      //interact
       interactPosition: {
         x: this.x,
         y: this.y,
@@ -54,7 +100,17 @@ export default {
           y += event.deltaRect.top;
           this.interactSetSize({ w });
           this.interactSetPosition({ x, y });
+        })
+        .resizable({
+          enabled: false,
+          edges: { left: true, right: true, bottom: true, top: true },
+          restrictSize: {
+            min: { width: 100, height: 100 },
+          },
+          preserveAspectRatio: true,
+          invert: "reposition",
         });
+      interact(el).draggable({ enabled: false });
     },
     interactSetPosition(coordinates) {
       const { x = 0, y = 0 } = coordinates;
@@ -72,26 +128,32 @@ export default {
     },
     setDraggable(isDraggable) {
       const el = this.$el;
-      if (isDraggable) {
-        interact(el).draggable({});
-      } else {
-        this.initModule();
-      }
+      interact(el).draggable({ enabled: isDraggable });
     },
     setResizable(isResizable) {
       const el = this.$el;
-      if (isResizable) {
-        el.resizable({
-          edges: { left: true, right: true, bottom: true, top: true },
-          restrictSize: {
-            min: { width: 100, height: 100 },
-          },
-          preserveAspectRatio: true,
-          invert: "reposition",
-        });
-      } else {
-        this.initModule();
-      }
+      interact(el).resizable({ enabled: isResizable });
+    },
+    // Menu
+    show(e) {
+      e.preventDefault();
+      this.menu.showMenu = false;
+      this.menu.x = e.clientX;
+      this.menu.y = e.clientY;
+      this.$nextTick(() => {
+        this.menu.showMenu = true;
+      });
+    },
+    menuItemClicked(e) {
+      console.log(e.title);
+    },
+  },
+  watch: {
+    isDraggable: function (newVal, oldVal) {
+      this.setDraggable(newVal)
+    },
+    isResizable: function (newVal, oldVal) {
+      this.setResizable(newVal)
     },
   },
 };
