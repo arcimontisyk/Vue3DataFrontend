@@ -31,17 +31,7 @@ export default {
       currentComponent: TestCard
     };
   },
-  methods: {
-    show(e) {
-      e.preventDefault();
-      this.showMenu = false;
-      this.y = e.clientY;
-      this.x = e.clientX;
-      this.$nextTick(() => {
-        this.showMenu = true;
-      });
-    },
-  },
+
   mounted(){
 
   }

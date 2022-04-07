@@ -42,6 +42,8 @@
         </v-list-item-group>
       </v-list>
     </v-menu>
+      {{ x }}
+  {{ y }}
   </div>
 </template>
 
