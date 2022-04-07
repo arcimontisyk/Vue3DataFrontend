@@ -1,6 +1,12 @@
 <template>
   <div class="dragresize__item" :style="transformString" @contextmenu="show">
-    <slot></slot>
+    <component :is="childComponent"> </component>
+    <div v-if="isResizable">
+      <div class="resizer tl"></div>
+      <div class="resizer bl"></div>
+      <div class="resizer tr"></div>
+      <div class="resizer br"></div>
+    </div>
     <v-menu
       v-model="menu.showMenu"
       :position-y="y"
@@ -47,7 +53,17 @@
 import _ from "lodash";
 import interact from "interactjs";
 export default {
-  props: ["src", "x", "y", "w"],
+  props: {
+    src: null,
+    x: 0,
+    y: 0,
+    w: 10,
+    childComponent: {
+      type: [String, Object],
+      default: "div",
+    },
+  },
+  // props: ["src", "x", "y", "w"],
   data() {
     return {
       // menu
@@ -78,6 +94,7 @@ export default {
   },
   mounted() {
     this.initModule();
+    this.currentComponent = this.component;
   },
   beforeDestroy() {
     interact(this.$el).unset();
@@ -150,10 +167,10 @@ export default {
   },
   watch: {
     isDraggable: function (newVal, oldVal) {
-      this.setDraggable(newVal)
+      this.setDraggable(newVal);
     },
     isResizable: function (newVal, oldVal) {
-      this.setResizable(newVal)
+      this.setResizable(newVal);
     },
   },
 };
@@ -165,5 +182,27 @@ export default {
   touch-action: none;
   user-select: none;
   z-index: 99;
+}
+.resizer {
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  position: absolute;
+}
+.resizer.tl {
+  top: -1rem;
+  left: -1rem;
+}
+.resizer.bl {
+  bottom: -1rem;
+  left: -1rem;
+}
+.resizer.tr {
+  top: -1rem;
+  right: -1rem;
+}
+.resizer.br {
+  bottom: -1rem;
+  right: -1rem;
 }
 </style>
