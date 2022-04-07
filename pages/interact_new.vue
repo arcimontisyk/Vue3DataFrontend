@@ -1,29 +1,45 @@
 <template>
   <section>
     <no-ssr>
-      <DragResize ref="objProduct" :y="0" :x="0"  :childComponent="currentComponent" />
+      <DragCard
+        v-for="(card, index) in cards"
+        :key="index"
+        :index="index"
+        :card="card"
+      />
     </no-ssr>
   </section>
 </template>
 
 <script>
-import TestCard from "~/components/testCard.vue";
-import TestCard2 from "~/components/testCard2.vue";
-import DragResize from "~/components/DragResize.vue";
+//import DragResize from "~/components/DragResize.vue";
+import { mapState } from "vuex";
+import DragCard from "~/components/DragCard.vue"
 export default {
   components: {
-    DragResize,
-    TestCard,
-    TestCard2,
+    DragCard
   },
   data() {
     return {
-      currentComponent: "TestCard2",
     };
   },
-  mounted() {},
+  computed: mapState("cards", ["cards"]),
+  mounted() {
+    // console.log("interact_new.vue")
+    // console.log(this.position)
+    // console.log(this.cards)
+  },
+  methods:{
+//        ...mapMutations("cards", ["SET_POSITION"]),
+//        ...mapMutations("cards", ["SET_WIDTH"]),
+  },
+  watch: {
+  //  cardPosition: function (newVal, oldVal) {
+  //    console.log(newVal.x);
+  //    console.log(newVal.y);
+  //  },
+  },
 };
 </script>
-
 <style scoped style="scss">
 </style>

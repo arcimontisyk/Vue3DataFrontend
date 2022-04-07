@@ -1,6 +1,5 @@
 <template>
   <div class="dragresize__item" :style="transformString" @contextmenu="show">
-    <component :is="childComponent"> </component>
     <div v-if="isResizable">
       <div class="resizer tl"></div>
       <div class="resizer bl"></div>
@@ -9,8 +8,8 @@
     </div>
     <v-menu
       v-model="menu.showMenu"
-      :position-y="y"
-      :position-x="x"
+      :position-y="position.y"
+      :position-x="position.x"
       absolute
       offset-y
     >
@@ -46,6 +45,7 @@
         </v-list-item-group>
       </v-list>
     </v-menu>
+    <slot></slot>
   </div>
 </template>
 
@@ -55,13 +55,9 @@ import interact from "interactjs";
 export default {
   props: {
     src: null,
-    x: 0,
-    y: 0,
+    x_initial: 0,
+    y_initial: 0,
     w: 10,
-    childComponent: {
-      type: [String, Object],
-      default: "div",
-    },
   },
   // props: ["src", "x", "y", "w"],
   data() {
@@ -74,9 +70,9 @@ export default {
         x: 0,
       },
       //interact
-      interactPosition: {
-        x: this.x,
-        y: this.y,
+      position: {
+        x: this.x_initial,
+        y: this.y_initial,
       },
       interactSize: {
         w: this.w,
@@ -87,7 +83,7 @@ export default {
   },
   computed: {
     transformString() {
-      const { x, y } = this.interactPosition;
+      const { x, y } = this.position;
       const { w } = this.interactSize;
       return ` width: ${w}px; transform: translate3D(${x}px, ${y}px, 0)`;
     },
@@ -105,18 +101,21 @@ export default {
       interact(el)
         // .draggable({})
         .on("dragmove", (event) => {
-          const x = this.interactPosition.x + event.dx;
-          const y = this.interactPosition.y + event.dy;
+          const x = this.position.x + event.dx;
+          const y = this.position.y + event.dy;
           this.interactSetPosition({ x, y });
         })
         .on("resizemove", (event) => {
-          let x = this.interactPosition.x;
-          let y = this.interactPosition.y;
+          let x = this.position.x;
+          let y = this.position.y;
           const w = event.rect.width;
           x += event.deltaRect.left;
           y += event.deltaRect.top;
           this.interactSetSize({ w });
           this.interactSetPosition({ x, y });
+        })
+        .on("dragend", (event) => {
+          this.savePosition();
         })
         .resizable({
           enabled: false,
@@ -131,7 +130,7 @@ export default {
     },
     interactSetPosition(coordinates) {
       const { x = 0, y = 0 } = coordinates;
-      this.interactPosition = { x, y };
+      this.position = { x, y };
     },
     interactSetSize(sizes) {
       const { w = 0 } = sizes;
@@ -160,6 +159,9 @@ export default {
       this.$nextTick(() => {
         this.menu.showMenu = true;
       });
+    },
+    savePosition() {
+      this.$emit("update:position", this.position);
     },
     menuItemClicked(e) {
       console.log(e.title);
