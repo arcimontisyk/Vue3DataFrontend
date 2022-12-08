@@ -1,7 +1,34 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer v-model="drawer">
-      <!--  -->
+      <v-container>
+        <v-list>
+          <v-list-item>
+            <v-btn @click="api.requestConfig" variant="flat" color="primary">
+              request Config
+            </v-btn>
+          </v-list-item>
+          <v-list-item>
+            <v-btn
+              @click="api.createChannel(tmtc.channels[channelName].config)"
+              variant="flat"
+              color="secondary"
+            >
+              create Channel
+            </v-btn>
+          </v-list-item>
+          <v-list-item>
+            <v-btn @click="api.newChannel" variant="flat" color="secondary">
+              new Channel
+            </v-btn>
+          </v-list-item>
+          <v-list-item>
+            <v-btn @click="api.restartChannel" variant="flat" color="secondary">
+              restart Channel
+            </v-btn>
+          </v-list-item>
+        </v-list>
+      </v-container>
     </v-navigation-drawer>
 
     <v-app-bar>
@@ -16,8 +43,14 @@
   </v-app>
 </template>
 
-<script>
-  export default {
-    data: () => ({ drawer: null }),
-  }
+<script setup lang="ts">
+import { tmtcStore } from "./stores/tmtc";
+import { apiStore } from "./stores/api";
+import { cardsStore } from "./stores/cards";
+//import TheWelcome from "../components/TheWelcome.vue";
+const tmtc = tmtcStore();
+const api = apiStore();
+const cards = cardsStore();
+const channelName = "default";
+let drawer = true;
 </script>

@@ -7,6 +7,7 @@
 // Styles
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
+import colors from 'vuetify/lib/util/colors'
 
 // Composables
 import { createVuetify } from 'vuetify'
@@ -16,10 +17,10 @@ export default createVuetify({
   theme: {
     defaultTheme: 'dark',
     themes: {
-      light: {
+      dark: {
         colors: {
-          primary: '#1867C0',
-          secondary: '#5CBBF6',
+          primary: colors.green.darken1, // #E53935
+          secondary: colors.blue.lighten4, // #FFCDD2
         },
       },
     },
