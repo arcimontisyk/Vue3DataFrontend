@@ -1,4 +1,47 @@
-<template>
+
+  <script setup lang="ts">
+//import { mapState2Way } from 'nuxt-socket-io/utils/common';
+import { RouterLink, RouterView } from "vue-router";
+import { ref, onMounted } from "vue";
+import { cardsStore } from "../../stores/cards";
+import { tmtcStore } from "../../stores/tmtc";
+
+const cards = cardsStore();
+const tmtc = tmtcStore();
+const channelName = "default";
+const { testCard } = cards;
+let text = "center";
+
+// text field
+const numberInput = ref(0);
+const textFieldLoading = ref(0);
+
+const props = defineProps({
+  i: Number,
+  content: Object,
+});
+
+const textFieldSubmit = function (event: any) {
+  event.preventDefault();
+  textFieldLoading = false;
+  console.log("event value: " + numberInput);
+};
+
+function changeTextFieldState() {
+  textFieldLoading = false;
+}
+
+const btn_clicked = function (name: string) {
+  console.log("Clicked: " + name);
+};
+const btn_submit = function (name: string) {
+  console.log("Btn submit " + name + " : " + numberInput);
+};
+</script>
+  
+  
+  
+  <template>
   <v-card class="mx-auto" max-width="10000">
     <v-card-header>
       <v-card-text> Commands </v-card-text>
@@ -14,10 +57,10 @@
             <v-form>
               <v-text-field
                 v-model="numberInput"
+                @keydown.enter="textFieldSubmit"
                 required
                 color="success"
-                loading
-              
+                :loading="textFieldLoading"
               ></v-text-field>
             </v-form>
           </v-col>
@@ -49,29 +92,3 @@
     </v-container>
   </v-card>
 </template>
-
-  <script setup lang="ts">
-//import { mapState2Way } from 'nuxt-socket-io/utils/common';
-import { RouterLink, RouterView } from "vue-router";
-import { cardsStore } from "../../stores/cards";
-import { tmtcStore } from "../../stores/tmtc";
-
-const cards = cardsStore();
-const tmtc = tmtcStore();
-const channelName = "default";
-const { testCard } = cards;
-let text = "center";
-let numberInput = 0;
-
-const props = defineProps({
-  i: Number,
-  content: Object,
-});
-
-const btn_clicked = function (name: string) {
-  console.log("Clicked: " + name);
-};
-const btn_submit = function (name: string) {
-  console.log("Btn submit " + name + " : " + numberInput);
-};
-</script>
