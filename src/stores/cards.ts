@@ -2,6 +2,32 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { tmtcStore } from "./tmtc";
 
+export interface DataLookup {
+  position: number,
+  address: number
+}
+
+export interface CardItem {
+  channel: string,
+  index: number,
+  type: string,
+  input: string | null
+  fieldName: string,
+  datalookup: DataLookup | null
+  items: Array<String>| null
+}
+
+export interface Card {
+  header: string,
+  style: string,
+  items: Array<CardItem> | null
+}
+
+export type Test = {
+  x: number;
+  y: string
+}
+
 export const cardsStore = defineStore("cards", () => {
   const tmtc = tmtcStore();
   const cards = ref(null)
@@ -13,32 +39,11 @@ export const cardsStore = defineStore("cards", () => {
     cards.value = data
   };
 
-  function test() {
-    console.log("test card")
-  }
-
-  type DataLookup = {
-    position: number,
-    address: number
-  }
-  type Card = {
-    channel: string,
-    index: number,
-    fieldName: string,
-    datalookup: DataLookup | null
-  }
   type LooseObject = {
     [key: string]: any
   }
 
-  //   { channel: string, index: 0, fieldName: "test_value_1", datalookup:{
-  //     position:number=0,
-  //     address:number=0
-  //   } },
-  //
-  // }
-
-  const testCard: LooseObject = ref(
+  const testCard: any = ref(
     {
       header: "tm_test",
       style: "table",
@@ -49,17 +54,19 @@ export const cardsStore = defineStore("cards", () => {
         { channel: "default", index: 0, type: "tm", fieldName: "temp_motor" },
       ]
     })
-  const cmdCard: LooseObject = ref(
+    
+  const cmdCard = ref<Card>(
     {
       header: "cmd_test",
       style: "rows",
       items: [
-        { channel: "default", index: 0, type: "tc", input: "value", fieldName: "torque_desired" },
-        { channel: "default", index: 0, type: "tc", input: "value", fieldName: "tau_desired" },
-        { channel: "default", index: 0, type: "tc", input: "value", fieldName: "motor_fault_over_current" },
-        { channel: "default", index: 0, type: "tc", input: "select", fieldName: "motor-state", items: ["Btn:Left", "Btn_Right"] },
+        { channel: "default", index: 0, type: "tc", input: "value",  datalookup:null, fieldName: "torque_desired", items:null },
+        { channel: "default", index: 0, type: "tc", input: "value",  datalookup:null, fieldName: "tau_desired", items:null },
+        { channel: "default", index: 0, type: "tc", input: "value",  datalookup:null, fieldName: "motor_fault_over_current", items:null },
+        { channel: "default", index: 0, type: "tc", input: "select", datalookup:null,  fieldName: "motor-state", items: ["Btn:Left", "Btn_Right"] },
       ]
     })
+
 
   // function getDetailsFromConfig(card: any) {//channel:string, fieldName:string){
   //

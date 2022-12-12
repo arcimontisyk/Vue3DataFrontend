@@ -1,8 +1,8 @@
 
   <template>
-  <v-card class="mx-auto" max-width="10000">
+  <v-card class="mx-auto" max-width="700">
     <v-card-header>
-      <v-card-text> Commands </v-card-text>
+      <v-card-title> Commands </v-card-title>
     </v-card-header>
     <v-container>
       <v-row v-for="item in cards.cmdCard.items" :key="item.fieldName">
@@ -34,7 +34,6 @@
         </template>
         <!------------------>
       </v-row>
-      {{ numberInput }}
     </v-container>
   </v-card>
 </template>

@@ -47,8 +47,8 @@ export const apiStore = defineStore("api", () => {
         socket.emit("restart_channel")
     }
 
-    function sendCommand(value:any, channel:string, index:number){
-        socket.emit("command", value)
+    function sendCommand(name:string, value:any, channel:string, index:number){
+        socket.emit("command", {name:name, value:value, channel:channel, index:index})
     }
 
     socket.on("config", (data) => {
@@ -65,5 +65,5 @@ export const apiStore = defineStore("api", () => {
 
 
 
-    return { initSocket, requestConfig, createChannel, newChannel, restartChannel };
+    return { initSocket, requestConfig, createChannel, newChannel, restartChannel, sendCommand };
 })
