@@ -1,6 +1,7 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import type internal from "stream";
+import { DataLookup, defaultDataLookup } from "./cards";
 
 export const tmtcStore = defineStore("tmtc", () => {
 
@@ -105,7 +106,7 @@ export const tmtcStore = defineStore("tmtc", () => {
   }
 
   function getDetail(channelName: string, type: string, index: number, fieldName: string) {
-    let paramObj = { position: -1, address: -1, }
+    let paramObj:DataLookup = new defaultDataLookup()
     console.log("---------- get detail -------------------")
     //   console.log(JSON.stringify(channels.value))
     //   printObject(channels.value)//.[channelName as keyof Channels].config["TMTC"][index])
@@ -126,6 +127,7 @@ export const tmtcStore = defineStore("tmtc", () => {
         i_position++
       }
     }
+    return paramObj
     console.log("---------- get detail END-------------------")
   }
 

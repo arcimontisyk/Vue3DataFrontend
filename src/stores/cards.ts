@@ -4,7 +4,12 @@ import { tmtcStore } from "./tmtc";
 
 export interface DataLookup {
   position: number,
-  address: number
+  address: number,
+}
+
+export class defaultDataLookup implements DataLookup{
+  position = -1;
+  address = -1;
 }
 
 export interface CardItem {
@@ -13,7 +18,7 @@ export interface CardItem {
   type: string,
   input: string | null
   fieldName: string,
-  datalookup: DataLookup | null
+  datalookup: DataLookup
   items: Array<String>
 }
 
@@ -60,10 +65,10 @@ export const cardsStore = defineStore("cards", () => {
       header: "cmd_test",
       style: "rows",
       items: [
-        { channel: "default", index: 0, type: "tc", input: "value", datalookup: null, fieldName: "torque_desired", items: [] },
-       { channel: "default", index: 0, type: "tc", input: "value", datalookup: null, fieldName: "tau_desired", items: [] },
-       { channel: "default", index: 0, type: "tc", input: "value", datalookup: null, fieldName: "motor_fault_over_current", items: [] },
-       { channel: "default", index: 0, type: "tc", input: "select", datalookup: null, fieldName: "motor-state", items: ["Btn:Left", "Btn_Right"] },
+        { channel: "default", index: 0, type: "tc", input: "value", datalookup: {position:0, address:0}, fieldName: "torque_desired", items: [] },
+       { channel: "default", index: 0, type: "tc", input: "value", datalookup:  {position:0, address:0}, fieldName: "tau_desired", items: [] },
+       { channel: "default", index: 0, type: "tc", input: "value", datalookup:  {position:0, address:0}, fieldName: "motor_fault_over_current", items: [] },
+       { channel: "default", index: 0, type: "tc", input: "select", datalookup:  {position:0, address:0}, fieldName: "motor-state", items: ["Btn:Left", "Btn_Right"] },
       ]
     })
 
@@ -102,8 +107,9 @@ export const cardsStore = defineStore("cards", () => {
         // process tm card
         let obj = tmtc.getDetail(cardItem.channel, cardItem.type, cardItem.index, cardItem.fieldName)
         console.log(JSON.stringify(obj))
-        card.value.items[i_cardItem]["datalookup"] = obj
-        console.log(JSON.stringify(card.value.items[i_cardItem]["datalookup"]))
+        //card.value.items[i_cardItem].datalookup = obj
+        card.value.items[i_cardItem].datalookup = obj
+        console.log(JSON.stringify(card.value.items[i_cardItem].datalookup))
         card.value.items[i_cardItem]["items"] = tmtc.getSelectDetails(cardItem)
         i_cardItem++
       }
