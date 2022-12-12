@@ -14,13 +14,13 @@ export interface CardItem {
   input: string | null
   fieldName: string,
   datalookup: DataLookup | null
-  items: Array<String>| null
+  items: Array<String>
 }
 
 export interface Card {
   header: string,
   style: string,
-  items: Array<CardItem> | null
+  items: Array<CardItem>
 }
 
 export type Test = {
@@ -54,16 +54,16 @@ export const cardsStore = defineStore("cards", () => {
         { channel: "default", index: 0, type: "tm", fieldName: "temp_motor" },
       ]
     })
-    
+
   const cmdCard = ref<Card>(
     {
       header: "cmd_test",
       style: "rows",
       items: [
-        { channel: "default", index: 0, type: "tc", input: "value",  datalookup:null, fieldName: "torque_desired", items:null },
-        { channel: "default", index: 0, type: "tc", input: "value",  datalookup:null, fieldName: "tau_desired", items:null },
-        { channel: "default", index: 0, type: "tc", input: "value",  datalookup:null, fieldName: "motor_fault_over_current", items:null },
-        { channel: "default", index: 0, type: "tc", input: "select", datalookup:null,  fieldName: "motor-state", items: ["Btn:Left", "Btn_Right"] },
+        { channel: "default", index: 0, type: "tc", input: "value", datalookup: null, fieldName: "torque_desired", items: [] },
+       { channel: "default", index: 0, type: "tc", input: "value", datalookup: null, fieldName: "tau_desired", items: [] },
+       { channel: "default", index: 0, type: "tc", input: "value", datalookup: null, fieldName: "motor_fault_over_current", items: [] },
+       { channel: "default", index: 0, type: "tc", input: "select", datalookup: null, fieldName: "motor-state", items: ["Btn:Left", "Btn_Right"] },
       ]
     })
 
@@ -95,18 +95,20 @@ export const cardsStore = defineStore("cards", () => {
   function processTcCard() {
     const card = cmdCard
     let i_cardItem = 0
-    for (let cardItem of card.value.items) {
-      console.log("-----process TC card------")
-      console.log(JSON.stringify(cardItem))
-      // process tm card
-      let obj = tmtc.getDetail(cardItem.channel, cardItem.type, cardItem.index, cardItem.fieldName)
-      console.log(JSON.stringify(obj))
-      card.value.items[i_cardItem]["datalookup"] = obj
-      console.log(JSON.stringify(card.value.items[i_cardItem]["datalookup"]))
-      card.value.items[i_cardItem]["items"] = tmtc.getSelectDetails(cardItem)
-      i_cardItem++
+    if (card != null) {
+      for (let cardItem of card.value.items) {
+        console.log("-----process TC card------")
+        console.log(JSON.stringify(cardItem))
+        // process tm card
+        let obj = tmtc.getDetail(cardItem.channel, cardItem.type, cardItem.index, cardItem.fieldName)
+        console.log(JSON.stringify(obj))
+        card.value.items[i_cardItem]["datalookup"] = obj
+        console.log(JSON.stringify(card.value.items[i_cardItem]["datalookup"]))
+        card.value.items[i_cardItem]["items"] = tmtc.getSelectDetails(cardItem)
+        i_cardItem++
+      }
     }
   }
 
-  return { test, testCard, processCard, setCards, cards, cmdCard, processTcCard };
+  return { testCard, processCard, setCards, cards, cmdCard, processTcCard };
 });

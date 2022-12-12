@@ -12,21 +12,18 @@
 </template>
   
 <script  lang="ts">
-interface CardProps {
-  cardItem: CardItem
-}
-</script>
-
-<script  lang="ts" setup>
-//import { mapState2Way } from 'nuxt-socket-io/utils/common';
-import { RouterLink, RouterView } from "vue-router";
-import { ComponentObjectPropsOptions } from "vue";
 import { ref, onMounted, watchEffect, PropType } from "vue";
 import { cardsStore } from "../../stores/cards";
 import { CardItem } from "../../stores/cards";
 import { tmtcStore } from "../../stores/tmtc";
 import { apiStore } from "../../stores/api";
 
+interface CardProps {
+  cardItem: CardItem;
+}
+</script>
+
+<script  lang="ts" setup>
 const cards = cardsStore();
 const tmtc = tmtcStore();
 const api = apiStore();
