@@ -11,17 +11,13 @@ export const apiStore = defineStore("api", () => {
     const cards = cardsStore();
     const port = 5000;
     const socket = io("localhost:" + port)
+    requestConfig()
 
     socket.on("data", (data) => {
-        console.log("tm data received")
-        console.log(data)
+    //    console.log("tm data received")
+    //    console.log(data)
         tmtc.setData(data["channel"], "tm", data.index, data.address, data.data)
     });
-
-    socket.on("count", (data) => {
-        console.log("count received")
-        console.log(data)
-    })
 
     function initSocket(port: number) {
       //  const socket = ref(io("localhost:" + port));
@@ -34,7 +30,7 @@ export const apiStore = defineStore("api", () => {
 
     function createChannel(config: any) {
         console.log("chreate Channel")
-        socket.emit("createChannel", config)
+    //    socket.emit("createChannel", config)
     }
 
     function newChannel() {
@@ -53,7 +49,7 @@ export const apiStore = defineStore("api", () => {
 
     socket.on("config", (data) => {
         console.log("config received");
-        console.log(data);
+    //    console.log(data);
         tmtc.setConfig(data);
         cards.processCard();
         cards.processTcCard();

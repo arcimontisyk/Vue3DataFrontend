@@ -1,17 +1,19 @@
     
 <template>
-  <v-form>
-    <v-text-field
-      v-model="numberInput"
-      @keydown.enter="textFieldSubmit"
-      required
-      color="success"
+
+<v-btn
       :loading="waitingForResponse"
-    ></v-text-field>
-  </v-form>
+      :disabled="waitingForResponse"
+      color="blue-grey"
+      prepend-icon="mdi-cloud-upload"
+      size="x-large"
+      @click="btn_clicked(cardItem.fieldName)"
+    >
+  Send</v-btn>
+
 </template>
-  
-<script  lang="ts">
+    
+  <script  lang="ts">
 import { ref, onMounted, watchEffect, PropType } from "vue";
 import { cardsStore } from "../../stores/cards";
 import { CardItem } from "../../stores/cards";
@@ -22,30 +24,31 @@ interface CardProps {
   cardItem: CardItem;
 }
 </script>
-
-<script  lang="ts" setup>
+  
+  <script  lang="ts" setup>
 const cards = cardsStore();
 const tmtc = tmtcStore();
 const api = apiStore();
 const channelName = "default";
-let text = "center";
+const text = "null";
 
 // text field
-const numberInput = ref(0);
+
 const waitingForResponse = ref(false);
 
 const props = withDefaults(defineProps<CardProps>(), {});
 
-const textFieldSubmit = function (event: any) {
-  event.preventDefault();
+const btn_clicked = function (name:string) {
+
   waitingForResponse.value = true;
-  console.log("event value: " + numberInput.value);
-  console.log(typeof(Number(numberInput.value)))
-  api.sendCommand(props.cardItem.fieldName, Number(numberInput.value), props.cardItem.channel, props.cardItem.index);
+  console.log("Clicked: " + name);
+  //   console.log("event value: " + numberInput);
+  console.log(JSON.stringify(props.cardItem))
+  api.sendCommand(props.cardItem.fieldName, 1, props.cardItem.channel, props.cardItem.index);
 };
 
-watchEffect(() => console.log(numberInput.value));
-
+//watchEffect(() => console.log(numberInput.value));
 </script>
-
-
+  
+  
+  
