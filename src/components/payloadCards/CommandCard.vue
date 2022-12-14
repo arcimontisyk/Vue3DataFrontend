@@ -5,9 +5,9 @@
       <v-card-title> Commands </v-card-title>
     </v-card-title>
     <v-container>
-      <v-row v-for="item in cards.cmdCard.items" :key="item.fieldName">
+      <v-row v-for="item in cards.cards[1].items" :key="item.fieldName">
         <!-- Value command-->
-        <template v-if="item.input == 'value'">
+        <template v-if="item.itemType == 'value'">
           <v-col>
             {{ item.displayName }}
           </v-col>
@@ -16,7 +16,7 @@
           </v-col>
         </template>
         <!-- Select command-->
-        <template v-if="item.input == 'select'">
+        <template v-if="item.itemType == 'select'">
           <v-col>
             {{ item.displayName }}
           </v-col>
@@ -28,7 +28,7 @@
         </template>
         <!------------------>
         <!-- Status command-->
-        <template v-if="item.input == 'status'">
+        <template v-if="item.itemType == 'status'">
           <v-col>
             {{ item.displayName }}
           </v-col>

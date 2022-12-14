@@ -9,7 +9,7 @@
       size="x-large"
       @click="btn_clicked(cardItem.fieldName)"
     >
-  Send</v-btn>
+  {{ "set" }}</v-btn>
 
 </template>
     

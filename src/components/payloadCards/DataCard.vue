@@ -8,7 +8,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in cards.testCard.items" :key="item.name">
+        <tr v-for="item in cards.cards[0].items" :key="item.fieldName">
           <td>{{ item.fieldName }}</td>
           <td v-if="tmtc.channels[channelName] != null">
             
