@@ -157,19 +157,19 @@ export const cardsStore = defineStore("cards", () => {
   //console.log(testCard)
 
   function processTcCard() {
-    const card = cmdCard
+    const card = cards.value[1]
     let i_cardItem = 0
     if (card != null) {
-      for (let cardItem of card.value.items) {
+      for (let cardItem of card.items) {
         console.log("-----process TC card------")
         console.log(JSON.stringify(cardItem))
         // process tm card
         let obj = tmtc.getDetail(cardItem.channel, cardItem.type, cardItem.index, cardItem.fieldName)
         console.log(JSON.stringify(obj))
         //card.value.items[i_cardItem].datalookup = obj
-        card.value.items[i_cardItem].datalookup = obj
-        console.log(JSON.stringify(card.value.items[i_cardItem].datalookup))
-        card.value.items[i_cardItem]["items"] = tmtc.getSelectDetails(cardItem)
+        card.items[i_cardItem].datalookup = obj
+        console.log(JSON.stringify(card.items[i_cardItem].datalookup))
+        card.items[i_cardItem]["items"] = tmtc.getSelectDetails(cardItem)
         i_cardItem++
       }
     }
