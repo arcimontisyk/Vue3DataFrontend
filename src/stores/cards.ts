@@ -1,6 +1,7 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { tmtcStore } from "./tmtc";
+import { apiStore } from "./api";
 
 export interface DataLookup {
   position: number,
@@ -36,14 +37,19 @@ export type Test = {
 
 export const cardsStore = defineStore("cards", () => {
   const tmtc = tmtcStore();
+  const api = apiStore();
   //  const cards = ref(null)
 
   // --------------------------------
   // ------- cards ------------------
   // --------------------------------
-  function setCards(data: any) {
+  function setCards(data: Array<Card>) {
     cards.value = data
   };
+
+  function saveCards(){
+    api.sendCards(cards.value)
+  }
 
   type LooseObject = {
     [key: string]: any
@@ -146,5 +152,5 @@ export const cardsStore = defineStore("cards", () => {
     }
   }
 
-  return { testCard, setCards, cards, cmdCard, processCards };
+  return { testCard, setCards, cards, cmdCard, processCards, saveCards };
 });

@@ -27,7 +27,17 @@
               restart Channel
             </v-btn>
           </v-list-item>
-
+          <v-list-item>
+            <v-btn @click="cards.saveCards" variant="flat" color="primary">
+              save Cards
+            </v-btn>
+          </v-list-item>
+          <v-list-item>
+            <v-btn @click="api.requestCards" variant="flat" color="secondary">
+              request Cards
+            </v-btn>
+          </v-list-item>
+          
         </v-list>
       </v-container>
     </v-navigation-drawer>

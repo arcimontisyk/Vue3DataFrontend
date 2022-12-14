@@ -4,6 +4,7 @@ import io from "socket.io-client";
 // import { Api } from "../services/api_ws";
 import { cardsStore } from "./cards"
 import { tmtcStore } from "./tmtc"
+import { CreateReadStreamOptions } from "fs/promises";
 
 export const apiStore = defineStore("api", () => {
 
@@ -47,6 +48,14 @@ export const apiStore = defineStore("api", () => {
         socket.emit("command", {name:name, value:value, channel:channel, index:index})
     }
 
+    function requestCards(){
+        socket.emit("request_cards")
+    }
+
+    function sendCards(cards:any){
+        socket.emit("cards", cards)
+    }
+
     socket.on("config", (data) => {
         console.log("config received");
         tmtc.setConfig(data);
@@ -59,5 +68,5 @@ export const apiStore = defineStore("api", () => {
 
 
 
-    return { initSocket, requestConfig, createChannel, newChannel, restartChannel, sendCommand };
+    return { initSocket, requestConfig, createChannel, newChannel, restartChannel, sendCommand, requestCards, sendCards };
 })
