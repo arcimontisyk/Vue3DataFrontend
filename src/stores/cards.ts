@@ -131,49 +131,20 @@ export const cardsStore = defineStore("cards", () => {
       ]
     })
 
-
-  // function getDetailsFromConfig(card: any) {//channel:string, fieldName:string){
-  //
-  //   //   const tmConfig = tmtc.getTmTc(card.channel)
-  //   //   card.generated = {"test": "test"}
-  // }
-
-  function processSelect(cardItem: LooseObject) {
-    const values = tmtc.getSelectDetails(cardItem)
-
-  }
-
-  function processCard() {
-    let i_cardItem = 0
-    for (let cardItem of cards.value[0].items) {
-      //   console.log("-----process card------")
-      // process tm card
-      let obj = tmtc.getDetail(cardItem.channel, cardItem.type, cardItem.index, cardItem.fieldName)
-      cards.value[0].items[i_cardItem]["datalookup"] = obj
-      i_cardItem++
-    }
-    //console.log(JSON.stringify(testCard.value))
-  }
-  //console.log(testCard)
-
-  function processTcCard() {
-    const card = cards.value[1]
-    let i_cardItem = 0
-    if (card != null) {
-      for (let cardItem of card.items) {
-        console.log("-----process TC card------")
-        console.log(JSON.stringify(cardItem))
-        // process tm card
-        let obj = tmtc.getDetail(cardItem.channel, cardItem.type, cardItem.index, cardItem.fieldName)
-        console.log(JSON.stringify(obj))
-        //card.value.items[i_cardItem].datalookup = obj
-        card.items[i_cardItem].datalookup = obj
-        console.log(JSON.stringify(card.items[i_cardItem].datalookup))
-        card.items[i_cardItem]["items"] = tmtc.getSelectDetails(cardItem)
-        i_cardItem++
+  function processCards() {
+    for (const card of cards.value){
+      let i_cardItem = 0
+      if (card != null) {
+        for (let cardItem of card.items) {
+          // process tm card
+          let obj = tmtc.getDetail(cardItem.channel, cardItem.type, cardItem.index, cardItem.fieldName)
+          card.items[i_cardItem].datalookup = obj
+          card.items[i_cardItem]["items"] = tmtc.getSelectDetails(cardItem)
+          i_cardItem++
+        }
       }
     }
   }
 
-  return { testCard, processCard, setCards, cards, cmdCard, processTcCard };
+  return { testCard, setCards, cards, cmdCard, processCards };
 });

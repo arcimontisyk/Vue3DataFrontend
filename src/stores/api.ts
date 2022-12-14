@@ -49,10 +49,8 @@ export const apiStore = defineStore("api", () => {
 
     socket.on("config", (data) => {
         console.log("config received");
-    //    console.log(data);
         tmtc.setConfig(data);
-        cards.processCard();
-        cards.processTcCard();
+      cards.processCards();
     });
 
     socket.on("cards", (data) => {
