@@ -13,10 +13,13 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "types": ["vuetify"],
+    "types": ["vuetify", "vite/client"],
     "paths": {
       "@/*": ["src/*"]
     },
+   "allowJs": true
+    // fix for ts babel/types error
+   // "skipLibCheck": false // https://github.com/vuejs/core/issues/5625
   },
   "include": [
     "src/**/*.ts",
