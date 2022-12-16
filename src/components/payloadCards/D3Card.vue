@@ -1,7 +1,9 @@
 <template>
   <v-card>
     <h1>Using Vue 3 (Composition API) with D3</h1>
-    <responsive-line-chart :data="data" />
+    <v-container>
+      <responsive-line-chart :data="data" />
+    </v-container>
     <div class="buttons">
       <v-btn @click="addData" color="blue-grey">Add data</v-btn>
       <v-btn @click="filterData" color="blue-grey">Filter data</v-btn>
@@ -77,7 +79,7 @@ svg {
   width: 100%;
   height: 100%;
   overflow: visible;
-  background: #eee;
+  /* background: #eee; */
 }
 
 .buttons {
