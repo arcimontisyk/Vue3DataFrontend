@@ -1,6 +1,11 @@
 <template>
   <v-card>
-    <h1>Using Vue 3 (Composition API) with D3</h1>
+    <v-list-item two-line>
+      <v-list-item-content>
+        <v-list-item-title class="text-h5"> Sytem Voltage </v-list-item-title>
+        <v-list-item-subtitle>5V, 12V, 3V3</v-list-item-subtitle>
+      </v-list-item-content>
+    </v-list-item>
     <v-container>
       <responsive-line-chart :data="data" />
     </v-container>
