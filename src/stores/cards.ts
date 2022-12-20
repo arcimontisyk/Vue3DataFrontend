@@ -30,8 +30,8 @@ export interface Card {
   x: number,
   y: number,
   position: { x: number, y: number },
-  width: 0,
- // type: "TestCard"
+  width: number,
+  type: string,
   items: Array<CardItem>
 }
 
@@ -64,6 +64,7 @@ export const cardsStore = defineStore("cards", () => {
     {
       header: "tm_test",
       style: "table",
+      type: "DataCard",
       x: 0,
       y: 0,
       position: { x: 0, y: 0 },
@@ -102,6 +103,7 @@ export const cardsStore = defineStore("cards", () => {
     {
       header: "cmd_test",
       style: "rows",
+      type: "CommandCard",
       x: 0,
       y: 0,
       position: { x: 0, y: 0 },
@@ -142,6 +144,7 @@ export const cardsStore = defineStore("cards", () => {
     {
       header: "cmd_test",
       style: "rows",
+      type: "CommandCard",
       x: 0,
       y: 0,
       position: { x: 0, y: 0 },

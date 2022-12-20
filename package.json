@@ -12,6 +12,8 @@
     "@types/babel__core": "^7.1.20",
     "@types/d3": "^7.4.0",
     "d3": "^7.7.0",
+    "interactjs": "^1.10.17",
+    "lodash": "^4.17.21",
     "pinia": "^2.0.27",
     "roboto-fontface": "*",
     "socket.io-client": "^4.5.3",

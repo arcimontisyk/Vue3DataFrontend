@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
+import NewDashboard from "../views/NewDashboard.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,11 @@ const router = createRouter({
       path: "/",
       name: "dashboard",
       component: Dashboard,
+    },
+    {
+      path: "/newdashboard",
+      name: "newDashboard",
+      component: NewDashboard,
     },
 //    {
 //      path: "/about",
