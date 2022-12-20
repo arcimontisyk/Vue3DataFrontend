@@ -31,10 +31,10 @@ export default {
     moveable: {
       draggable: true,
       throttleDrag: 1,
-      resizable: false,
+      resizable: true,
       throttleResize: 1,
-      keepRatio: true,
-      scalable: true,
+      keepRatio: false,
+      scalable: false,
       throttleScale: 0.01,
       rotatable: true,
       throttleRotate: 0.2,
