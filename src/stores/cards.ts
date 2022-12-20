@@ -27,6 +27,11 @@ export interface CardItem {
 export interface Card {
   header: string,
   style: string,
+  x: number,
+  y: number,
+  position: { x: number, y: number },
+  width: 0,
+ // type: "TestCard"
   items: Array<CardItem>
 }
 
@@ -59,6 +64,10 @@ export const cardsStore = defineStore("cards", () => {
     {
       header: "tm_test",
       style: "table",
+      x: 0,
+      y: 0,
+      position: { x: 0, y: 0 },
+      width: 0,
       items: [
         { channel: "default", index: 0, type: "tm", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "i_phase_a", fieldName: "i_phase_a", items: [] },
         { channel: "default", index: 0, type: "tm", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "i_phase_b", fieldName: "i_phase_b", items: [] },
@@ -93,6 +102,10 @@ export const cardsStore = defineStore("cards", () => {
     {
       header: "cmd_test",
       style: "rows",
+      x: 0,
+      y: 0,
+      position: { x: 0, y: 0 },
+      width: 0,
       items: [
         { channel: "default", index: 0, type: "tc", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "torque desired", fieldName: "torque_desired", items: [] },
         { channel: "default", index: 0, type: "tc", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "tau desired", fieldName: "tau_desired", items: [] },
@@ -129,6 +142,10 @@ export const cardsStore = defineStore("cards", () => {
     {
       header: "cmd_test",
       style: "rows",
+      x: 0,
+      y: 0,
+      position: { x: 0, y: 0 },
+      width: 0,
       items: [
         { channel: "default", index: 0, type: "tc", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "torque desired", fieldName: "torque_desired", items: [] },
         { channel: "default", index: 0, type: "tc", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "tau desired", fieldName: "tau_desired", items: [] },
