@@ -37,7 +37,6 @@
               request Cards
             </v-btn>
           </v-list-item>
-          
         </v-list>
       </v-container>
     </v-navigation-drawer>
@@ -63,6 +62,6 @@ const tmtc = tmtcStore();
 const api = apiStore();
 const cards = cardsStore();
 const channelName = "default";
-const zoom = screen.width
+const zoom = screen.width;
 let drawer = true;
 </script>

@@ -55,7 +55,7 @@ import _ from "lodash";
 import interact from "interactjs";
 export default {
   props: {
-    pos_and_size: Object
+    pos_and_size: Object,
   },
   data() {
     return {
@@ -162,7 +162,7 @@ export default {
     savePosition() {
       console.log("x: " + this.interactPosition.x);
       console.log("y: " + this.interactPosition.y);
-      console.log("w " + 0);//this.interactPosition.w);
+      console.log("w " + 0); //this.interactPosition.w);
       //------------------------
       var newVal = {
         x: this.interactPosition.x,

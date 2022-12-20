@@ -27,12 +27,20 @@ export interface CardItem {
 export interface Card {
   header: string,
   style: string,
-  x: number,
-  y: number,
+  pos_x: number,
+  pos_y: number,
+  size_x: number,
   position: { x: number, y: number },
   width: number,
   type: string,
   items: Array<CardItem>
+}
+
+export interface CardParams {
+  index: number,
+  x: number,
+  y: number,
+  w: number
 }
 
 export type Test = {
@@ -52,8 +60,19 @@ export const cardsStore = defineStore("cards", () => {
     cards.value = data
   };
 
-  function saveCards(){
+  function saveCards() {
     api.sendCards(cards.value)
+  }
+
+
+  function updateCardsPosAndSize(dataobject: CardParams) {
+    //databoject: {index,x,y,w,h}
+    console.log("Index: " + dataobject.index)
+    console.log("X: " + dataobject.x)
+    cards.value[dataobject.index].pos_x = dataobject.x || 0
+    cards.value[dataobject.index].pos_y = dataobject.y || 0
+    cards.value[dataobject.index].size_x = dataobject.w || 100
+    //state.cards[index].size_y=h || 0
   }
 
   type LooseObject = {
@@ -65,10 +84,11 @@ export const cardsStore = defineStore("cards", () => {
       header: "tm_test",
       style: "table",
       type: "DataCard",
-      x: 0,
-      y: 0,
+      pos_x: 500,
+      pos_y: 0,
+      size_x: 300,
       position: { x: 0, y: 0 },
-      width: 0,
+      width: 300,
       items: [
         { channel: "default", index: 0, type: "tm", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "i_phase_a", fieldName: "i_phase_a", items: [] },
         { channel: "default", index: 0, type: "tm", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "i_phase_b", fieldName: "i_phase_b", items: [] },
@@ -96,7 +116,7 @@ export const cardsStore = defineStore("cards", () => {
         { channel: "default", index: 0, type: "tm", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "dms_ref", fieldName: "dms_ref", items: [] },
         { channel: "default", index: 0, type: "tm", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "temp_struktur", fieldName: "temp_struktur", items: [] },
         { channel: "default", index: 0, type: "tm", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "temp_amp", fieldName: "temp_amp", items: [] },
-//        { channel: "default", index: 0, type: "tm", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "", fieldName: "", items: [] },
+        //        { channel: "default", index: 0, type: "tm", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "", fieldName: "", items: [] },
 
       ]
     },
@@ -104,10 +124,11 @@ export const cardsStore = defineStore("cards", () => {
       header: "cmd_test",
       style: "rows",
       type: "CommandCard",
-      x: 0,
-      y: 0,
+      pos_x: 500,
+      pos_y: 0,
+      size_x: 300,
       position: { x: 0, y: 0 },
-      width: 0,
+      width: 300,
       items: [
         { channel: "default", index: 0, type: "tc", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "torque desired", fieldName: "torque_desired", items: [] },
         { channel: "default", index: 0, type: "tc", itemType: "value", datalookup: { position: -1, address: -1 }, displayName: "tau desired", fieldName: "tau_desired", items: [] },
@@ -121,7 +142,7 @@ export const cardsStore = defineStore("cards", () => {
         { channel: "default", index: 0, type: "tc", itemType: "status", datalookup: { position: -1, address: -1 }, displayName: "drv_otw_reset", fieldName: "drv_otw_reset", items: [] },
         { channel: "default", index: 0, type: "tc", itemType: "status", datalookup: { position: -1, address: -1 }, displayName: "no_fault_reset", fieldName: "no_fault_reset", items: [] },
         { channel: "default", index: 0, type: "tc", itemType: "status", datalookup: { position: -1, address: -1 }, displayName: "motor_power_min", fieldName: "motor_power_min", items: [] },
-//        { channel: "default", index: 0, type: "tc", itemType: "status", datalookup: { position: -1, address: -1 }, displayName: "", fieldName: "", items: [] },
+        //        { channel: "default", index: 0, type: "tc", itemType: "status", datalookup: { position: -1, address: -1 }, displayName: "", fieldName: "", items: [] },
 
       ]
     }
@@ -145,8 +166,9 @@ export const cardsStore = defineStore("cards", () => {
       header: "cmd_test",
       style: "rows",
       type: "CommandCard",
-      x: 0,
-      y: 0,
+      pos_x: 0,
+      pos_y: 0,
+      size_x: 100,
       position: { x: 0, y: 0 },
       width: 0,
       items: [
@@ -158,7 +180,7 @@ export const cardsStore = defineStore("cards", () => {
     })
 
   function processCards() {
-    for (const card of cards.value){
+    for (const card of cards.value) {
       let i_cardItem = 0
       if (card != null) {
         for (let cardItem of card.items) {
