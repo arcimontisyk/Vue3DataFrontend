@@ -1,19 +1,19 @@
 <template>
-  <div class="container">
+  <v-container>
     <div class="target">
       <CommandCard />
     </div>
     <Moveable
       className="moveable"
       v-bind:target="['.target']"
-      v-bind:draggable="true"
-      v-bind:scalable="true"
-      v-bind:rotatable="true"
-      @drag="onDrag"
-      @scale="onScale"
-      @rotate="onRotate"
+      v-bind="moveable"
+      @drag="handleDrag"
+      @resize="handleResize"
+      @scale="handleScale"
+      @rotate="handleRotate"
+      @warp="handleWarp"
     />
-  </div>
+  </v-container>
 </template>
 <script>
 import Moveable from "vue3-moveable";
@@ -27,34 +27,62 @@ export default {
     DataCard,
     CommandCard,
   },
-
+  data: () => ({
+    moveable: {
+      draggable: true,
+      throttleDrag: 1,
+      resizable: false,
+      throttleResize: 1,
+      keepRatio: true,
+      scalable: true,
+      throttleScale: 0.01,
+      rotatable: true,
+      throttleRotate: 0.2,
+      pinchable: true,
+      origin: false,
+    },
+    states: {
+      scalable: "Scalable",
+      resizable: "Resizable",
+      warpable: "Warpable",
+    },
+    currentState: "scalable",
+  }),
   methods: {
-    onDrag({ target, transform }) {
+    handleDrag({ target, transform }) {
+      console.log("onDrag", transform);
       target.style.transform = transform;
     },
-    onScale({ target, drag }) {
-      target.style.transform = drag.transform;
+    handleResize({ target, width, height }) {
+      console.log("onResize", width, height);
+      target.style.width = `${width}px`;
+      target.style.height = `${height}px`;
     },
-    onRotate({ target, drag }) {
-      target.style.transform = drag.transform;
+    handleScale({ target, transform }) {
+      console.log("onScale", transform);
+      target.style.transform = transform;
+    },
+    handleRotate({ target, transform }) {
+      console.log("onRotate", transform);
+      target.style.transform = transform;
+    },
+    handleWarp({ target, transform }) {
+      console.log("onWarp", transform);
+      target.style.transform = transform;
+    },
+    clearAllStates() {
+      Object.keys(this.states).forEach((key) => {
+        this.moveable[key] = false;
+      });
     },
   },
 };
 </script>
 
 <style lang="scss">
-.container {
-  position: relative;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-}
-
 .moveable {
   font-family: "Roboto", sans-serif;
   position: relative;
-
   text-align: center;
   font-size: 40px;
   margin: 0 auto;
@@ -66,7 +94,8 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100px;
+
   white-space: nowrap;
 }
 </style>

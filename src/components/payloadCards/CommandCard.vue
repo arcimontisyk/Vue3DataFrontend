@@ -1,6 +1,5 @@
-
-  <template>
-  <v-card class="mx-auto" max-width="700">
+<template>
+  <v-card class="mx-auto" width="100%">
     <v-card-title>
       <v-card-title> Commands </v-card-title>
     </v-card-title>
@@ -43,7 +42,7 @@
     </v-container>
   </v-card>
 </template>
-    
+
 <script setup lang="ts">
 //import { mapState2Way } from 'nuxt-socket-io/utils/common';
 import { RouterLink, RouterView } from "vue-router";
@@ -52,7 +51,7 @@ import { cardsStore } from "../../stores/cards";
 import { tmtcStore } from "../../stores/tmtc";
 import commandValueField from "./commandValueField.vue";
 import commandSelectBtn from "./commandSelectBtn.vue";
-import commandStatusBtn from "./commandStatusBtn.vue"
+import commandStatusBtn from "./commandStatusBtn.vue";
 
 const cards = cardsStore();
 const tmtc = tmtcStore();
@@ -84,4 +83,4 @@ watchEffect(() => console.log(numberInput.value));
 const btn_submit = function (name: string) {
   console.log("Btn submit " + name + " : " + numberInput);
 };
-</script> 
+</script>
