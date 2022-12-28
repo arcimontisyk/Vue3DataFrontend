@@ -1835,6 +1835,16 @@ vue-template-compiler@^2.7.14:
     de-indent "^1.0.2"
     he "^1.2.0"
 
+vue-trading-view@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vue-trading-view/-/vue-trading-view-1.0.1.tgz#05309a9cfa70c296b1c24251a6e29595a8a3579b"
+  integrity sha512-CNTrPt/yvcpu724l36YGlrwczcKEt9hwKyw9cEZ8PRcqR0jwNBWZkk6bJVCgACmXkLqJZjsPUagaYfQHvtsjeQ==
+
+vue-tradingview-widgets@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/vue-tradingview-widgets/-/vue-tradingview-widgets-1.2.0.tgz#1bf06f6058a9e01f84b6d11fdaf5cabce3f67fe1"
+  integrity sha512-cC6FXkHjX0fh6HD7pYWpqWunLou+xfyEWj+AMJ/NaXqfkrYmX9iZmEGYIf6fXaitWhDAJ5X42bn8x0qWWrd0Qg==
+
 vue-tsc@^1.0.9:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/vue-tsc/-/vue-tsc-1.0.11.tgz#b4d1a74dbdef79c0458839abf27c717f969a2e67"

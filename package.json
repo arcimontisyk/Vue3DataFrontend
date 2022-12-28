@@ -19,6 +19,8 @@
     "vue": "^3.2.38",
     "vue-interactjs": "^0.1.10",
     "vue-router": "^4.0.13",
+    "vue-trading-view": "^1.0.1",
+    "vue-tradingview-widgets": "^1.2.0",
     "vue3-moveable": "^0.17.1",
     "vuetify": "^3.0.0",
     "webfontloader": "^1.0.0"
