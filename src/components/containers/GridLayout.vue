@@ -2,7 +2,7 @@
 
   <grid-layout :layout.sync="layout" :col-num="12" :row-height="30" :is-draggable="draggable" :is-resizable="resizable"
     :vertical-compact="true" :use-css-transforms="true">
-    <grid-item v-for="item in layout" :static="item.static" :x="item.x" :y="item.y" :w="item.w"  :i="item.i">
+    <grid-item v-for="item in layout" :static="item.static" :x="item.x" :y="item.y" :w="item.w" :h="-1" :i="item.i">
        <span class="text">{{ itemTitle(item) }}</span>
      <testCard/>
   <!--    <component :is="childComponent"></component> -->
