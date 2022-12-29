@@ -4,10 +4,10 @@
       <v-container>
         <v-row>
           <v-col>
-        <!--    <TradingCard />--> 
+            <ChartJSLineChart />
           </v-col>
           <v-col>
-           <ChartJSLineChart /> 
+         
           </v-col>
           <v-col>
             <v-row>
@@ -26,7 +26,7 @@
 <script setup lang="ts">
 //import { tmtcStore } from "../stores/tmtc";
 //import { apiStore } from "../stores/api";
-import TradingCard from "@/components/trading/tradingview-widget-example.vue"
+
 import ChartJSLineChart from "@/components/vue-chartjs/lineChart.vue"
 
 const channelName = "default";
