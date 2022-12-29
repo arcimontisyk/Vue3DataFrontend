@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
 import NewDashboard from "../views/NewDashboard.vue";
 import Trading from "@/views/Trading.vue";
+import GridLayout from "@/views/GridLayout.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: "/trading",
       name: "Trading",
       component: Trading,
+    },
+    {
+      path: "/grid",
+      name: "Grid",
+      component: GridLayout,
     },
 //    {
 //      path: "/about",
