@@ -1,8 +1,11 @@
 <template>
+
   <grid-layout :layout.sync="layout" :col-num="12" :row-height="30" :is-draggable="draggable" :is-resizable="resizable"
     :vertical-compact="true" :use-css-transforms="true">
-    <grid-item v-for="item in layout" :static="item.static" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i">
-      <span class="text">{{ itemTitle(item) }}</span>
+    <grid-item v-for="item in layout" :static="item.static" :x="item.x" :y="item.y" :w="item.w"  :i="item.i">
+       <span class="text">{{ itemTitle(item) }}</span>
+     <testCard/>
+  <!--    <component :is="childComponent"></component> -->
     </grid-item>
   </grid-layout>
 
@@ -10,17 +13,25 @@
 
 <script lang="ts">
 import { GridLayout, GridItem } from "vue3-grid-layout"
+import  testCard  from "@/components/containers/testCard.vue"
 
 export default {
   components: {
     GridLayout,
-    GridItem
+    GridItem,
+    testCard
+  },
+  props: {
+    childComponent: {
+      type: [String, Object],
+      default: "div",
+    },
   },
   data() {
     return {
       layout: [
-        { "x": 0, "y": 0, "w": 2, "h": 2, "i": "0", static: false },
-        { "x": 2, "y": 0, "w": 2, "h": 4, "i": "1", static: true },
+        { "x": 0, "y": 0, "w": 2, "h": 10, "i": "0", static: false },
+        { "x": 2, "y": 0, "w": 2, "h": 4, "i": "1", static: false  },
         { "x": 4, "y": 0, "w": 2, "h": 5, "i": "2", static: false },
         { "x": 6, "y": 0, "w": 2, "h": 3, "i": "3", static: false },
 
@@ -43,18 +54,13 @@ export default {
 </script>
 
 <style scoped>
-.vue-grid-layout {
-  background: #eee;
- min-height:100%
-}
-
-grid-layout{
-  height:100vh;
+grid-layout {
+  height: 100vh;
 }
 
 .vue-grid-item:not(.vue-grid-placeholder) {
-  background: #ccc;
-  border: 1px solid black;
+  /*  background: #ccc; */
+  border: 5px solid rgb(193, 28, 28);
 }
 
 .vue-grid-item .resizing {
@@ -91,6 +97,7 @@ grid-layout{
   cursor: pointer;
 }
 
+
 .vue-draggable-handle {
   position: absolute;
   width: 20px;
@@ -105,4 +112,5 @@ grid-layout{
   box-sizing: border-box;
   cursor: pointer;
 }
+
 </style>
