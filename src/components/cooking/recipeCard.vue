@@ -1,7 +1,10 @@
 <template>
   <div class="d-flex align-center flex-column">
-    <v-card width="400" title="This is a title" subtitle="This is a subtitle" text="This is content">
-      <template v-slot:text>
+    <v-card width="400">
+
+      <v-img cover height="250" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"></v-img>
+      <v-card-title>Sahnekuchen</v-card-title>
+      <v-card-text>
         <v-row align="center" justify="center">
           <v-col cols="8">
             <v-row>
@@ -19,7 +22,21 @@
             </v-chip>
           </v-col>
         </v-row>
-      </template></v-card>
+      </v-card-text>
+      <v-card-title>Total values</v-card-title>
+      <div class="px-4">
+        <v-chip-group v-model="selection">
+          <v-chip>500 kcal</v-chip>
+          <v-chip>0,1 g Fett </v-chip>
+          <v-chip>10 g Vitamine</v-chip>
+        </v-chip-group>
+      </div>
+      <v-card-actions>
+        <v-btn color="deep-purple-lighten-2" variant="text" @click="reserve">
+          Add to favourites
+        </v-btn>
+      </v-card-actions>
+    </v-card>
 
   </div>
 </template>
