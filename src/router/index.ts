@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
 import NewDashboard from "../views/NewDashboard.vue";
-import TradingView from "@/views/trading.vue";
+import TradingView from "@/views/Trading.vue";
+import gridview from "@/views/gridview";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,11 @@ const router = createRouter({
       name: "TradingView",
       component: TradingView,
     },
+    {
+      path: "/gridview",
+      name: "gridView",
+      component: gridview,
+    }
 //    {
 //      path: "/about",
 //      name: "about",
