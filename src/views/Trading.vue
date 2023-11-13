@@ -1,36 +1,39 @@
-<template>
-  <v-layout>
-    <v-main>
-      <v-container>
-        <v-row>
-          <v-col>
-            <TradingCard />
-          </v-col>
-          <v-col>
-         
-          </v-col>
-          <v-col>
-            <v-row>
-
-            </v-row>
-            <v-row>
-
-            </v-row>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
-  </v-layout>
-</template>
-
 <script setup lang="ts">
-//import { tmtcStore } from "../stores/tmtc";
-//import { apiStore } from "../stores/api";
 import TradingCard from "@/components/trading/tradingview-widget-example.vue"
 import ChartJSLineChart from "@/components/vue-chartjs/lineChart.vue"
-
-const channelName = "default";
+import tradingview from "@/components/tradingview/tradingview.vue";
+import tradingviewChart from "@/components/tradingview/tradingview_chart.vue";
+import tradingWidget from "@/components/tradingview/widget.vue";
 </script>
+
+<template>
+  <main>
+    <v-row>
+      <v-col cols="12">
+        <tradingWidget />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <tradingviewChart />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <tradingview />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <TradingCard />
+      </v-col>
+    </v-row>
+  </main>
+</template>
+
+
+
+
 
 <style>
 @media (min-width: 1024px) {

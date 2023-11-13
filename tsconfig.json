@@ -12,14 +12,22 @@
     "sourceMap": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
-    "types": ["vuetify", "vite/client"],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "vuetify",
+      "vite/client"
+    ],
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     },
-   "allowJs": true
+    "allowJs": true
     // fix for ts babel/types error
-   // "skipLibCheck": false // https://github.com/vuejs/core/issues/5625
+    // "skipLibCheck": false // https://github.com/vuejs/core/issues/5625
   },
   "include": [
     "src/**/*.ts",

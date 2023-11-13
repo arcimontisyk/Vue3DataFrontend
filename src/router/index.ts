@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
 import NewDashboard from "../views/NewDashboard.vue";
+import TradingView from "@/views/Trading.vue";
+import gridview from "@/views/gridview";
 import Trading from "@/views/Trading.vue";
 import GridLayout from "@/views/DashboardGrid.vue";
 
@@ -19,6 +21,16 @@ const router = createRouter({
     },
     {
       path: "/trading",
+      name: "TradingView",
+      component: TradingView,
+    },
+    {
+      path: "/gridview",
+      name: "gridView",
+      component: gridview,
+    },
+    {
+      path: "/trading2",
       name: "Trading",
       component: Trading,
     },
@@ -27,19 +39,19 @@ const router = createRouter({
       name: "Grid",
       component: GridLayout,
     },
-//    {
-//      path: "/about",
-//      name: "about",
-//      // route level code-splitting
-//      // this generates a separate chunk (About.[hash].js) for this route
-//      // which is lazy-loaded when the route is visited.
-//      component: () => import("../views/AboutView.vue"),
-//    },
-//    {
-//      path: "/counter",
-//      name: "counter",
-//      component: () => import("../views/CounterView.vue"),
-//    },
+    //    {
+    //      path: "/about",
+    //      name: "about",
+    //      // route level code-splitting
+    //      // this generates a separate chunk (About.[hash].js) for this route
+    //      // which is lazy-loaded when the route is visited.
+    //      component: () => import("../views/AboutView.vue"),
+    //    },
+    //    {
+    //      path: "/counter",
+    //      name: "counter",
+    //      component: () => import("../views/CounterView.vue"),
+    //    },
   ],
 });
 
