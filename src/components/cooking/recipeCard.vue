@@ -3,7 +3,7 @@
     <v-card width="400">
 
       <v-img cover height="250" src="https://cdn.vuetifyjs.com/images/cards/cooking.png"></v-img>
-      <v-card-title>Sahnekuchen</v-card-title>
+      <v-card-title class="green darken-4">Chocolate cheesecake recipe</v-card-title>
       <v-card-text>
         <v-row align="center" justify="center">
           <v-col cols="8">
@@ -23,7 +23,7 @@
           </v-col>
         </v-row>
       </v-card-text>
-      <v-card-title>Total values</v-card-title>
+      <v-divider class="mx-4 mb-1"></v-divider>
       <div class="px-4">
         <v-chip-group v-model="selection">
           <v-chip>500 kcal</v-chip>
