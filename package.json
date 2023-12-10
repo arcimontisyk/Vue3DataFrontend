@@ -28,7 +28,7 @@
     "vue3-grid-layout": "^1.0.0",
     "vue3-grid-layout-next": "^1.0.6",
     "vue3-moveable": "^0.17.1",
-    "vuetify": "^3.0.0",
+    "vuetify": "^3.4.6",
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {

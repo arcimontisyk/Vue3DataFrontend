@@ -1,7 +1,6 @@
 <template>
   <v-app id="inspire">
     <DynamicLayoutAndOrder>
-     
       <RouterView />
     </DynamicLayoutAndOrder>
   </v-app>
