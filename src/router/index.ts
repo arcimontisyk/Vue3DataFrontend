@@ -6,6 +6,7 @@ import gridview from "@/views/gridview";
 import Trading from "@/views/Trading.vue";
 import GridLayout from "@/views/DashboardGrid.vue";
 import CookingView from "@/views/Cooking.vue";
+import Todo from "@/views/Todo.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,6 +45,11 @@ const router = createRouter({
       path: "/cooking",
       name: "Cooking",
       component: CookingView
+    },
+    {
+      path: "/todo",
+      name: "ToDo",
+      component: Todo
     }
     //    {
     //      path: "/about",
